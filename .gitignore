@@ -1,0 +1,13 @@
+# ASP.NET Core Build Çıktıları
+[obj]
+[bin]
+*.pdb
+*.user
+
+# HASSAS DOSYALAR - Şifreler burada olduğu için GitHub'a gitmemeli
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# Log dosyaları
+*.log
