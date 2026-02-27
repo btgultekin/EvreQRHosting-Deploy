@@ -1,0 +1,231 @@
+/* EvreQR marka rengi: şık teal tonu */
+:root {
+  --lynar-primary: #0d9488;
+  --lynar-primary-hover: #0f766e;
+  --lynar-primary-light: #ccfbf1;
+}
+
+.text-lynar-primary { color: var(--lynar-primary); }
+.hover\:text-lynar-primary:hover { color: var(--lynar-primary); }
+.bg-lynar-primary { background-color: var(--lynar-primary); }
+.hover\:bg-lynar-primary:hover { background-color: var(--lynar-primary-hover); }
+.border-lynar-primary { border-color: var(--lynar-primary); }
+.focus\:ring-lynar-primary:focus { --tw-ring-color: var(--lynar-primary); }
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Form odak stilleri (Bootstrap referansları kaldırıldı) */
+input:focus, button:focus {
+  outline: none;
+}
+
+/* ========== Landing: Digital Transformation (Indigo, Violet, Orange/Pink) ========== */
+/* Mesh gradient: mavi + indigo + electric violet + warm orange/pink */
+.landing-mesh-bg {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 20%, #4c1d95 35%, #6d28d9 50%, #7c3aed 65%, #a855f7 80%, #c026d3 90%, #ea580c 100%);
+  background-size: 400% 400%;
+  animation: mesh-shift 18s ease infinite;
+}
+@keyframes mesh-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Blob'lar: indigo, electric violet, warm orange/pink harmanı */
+.landing-mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.landing-mesh-blob-1 { width: 55vmax; height: 55vmax; background: #6366f1; top: -15%; right: -5%; }
+.landing-mesh-blob-2 { width: 50vmax; height: 50vmax; background: #8b5cf6; bottom: -15%; left: -5%; }
+.landing-mesh-blob-3 { width: 45vmax; height: 45vmax; background: #c026d3; top: 40%; left: 60%; }
+.landing-mesh-blob-4 { width: 35vmax; height: 35vmax; background: #ea580c; bottom: 20%; right: 20%; }
+
+/* Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* CTA: mesh gradient buton (indigo → violet → orange/pink) + glow + hover */
+.cta-glow {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 40%, #c026d3 70%, #ea580c 100%);
+  background-size: 200% 200%;
+  animation: cta-gradient-shift 8s ease infinite;
+  box-shadow: 0 0 28px rgba(99, 102, 241, 0.4), 0 0 48px rgba(192, 38, 211, 0.25), 0 0 24px rgba(234, 88, 12, 0.2);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+.cta-glow:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+  box-shadow: 0 0 36px rgba(99, 102, 241, 0.5), 0 0 56px rgba(192, 38, 211, 0.35), 0 0 32px rgba(234, 88, 12, 0.3);
+}
+@keyframes cta-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Metin gradient: marka (indigo/violet) */
+.text-gradient-lynar {
+  background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 40%, #e9d5ff 70%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero slogan vurgusu: "Dijitale Geçin" – turuncu → pembe (okunaklı, keskin) */
+.text-gradient-hero {
+  background: linear-gradient(135deg, #fb923c 0%, #f472b6 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Landing: tek sayfa smooth scroll (fiyatlandırma geçişi) */
+html.landing-page {
+  scroll-behavior: smooth;
+}
+
+/* Slider: kıvrımlı üst/alt kenar (wave) */
+.landing-wave-top {
+  margin-top: -1px;
+}
+.landing-wave-bottom {
+  margin-bottom: -1px;
+  vertical-align: bottom;
+}
+.landing-wave-top svg,
+.landing-wave-bottom svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/* Benim Eklediğim Alan Referanslar Kısmı */
+.logo-card {
+  min-width: 220px; /* kart genişledi */
+  height: 110px;
+  background: #f9fafb;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* padding azaltıldı */
+  transition: 0.3s;
+}
+
+.logo-card img {
+  height: 70px; /* logo büyüdü */
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: 0.3s;
+}
+
+.logo-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  width: max-content;
+  animation: scroll 22s linear infinite;
+}
+
+/* ========== Landing: Sabit sol/sağ alt butonlar (WhatsApp + Yukarı Çık) ========== */
+.landing-fab {
+  position: fixed;
+  z-index: 40;
+  bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+.landing-fab:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+/* Sol alt: WhatsApp */
+.landing-fab-whatsapp {
+  left: 1.5rem;
+  background: #25d366;
+  color: #fff;
+}
+.landing-fab-whatsapp:hover {
+  background: #20bd5a;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+}
+.landing-fab-whatsapp .landing-fab-whatsapp-label {
+  display: none;
+}
+@media (min-width: 640px) {
+  .landing-fab-whatsapp .landing-fab-whatsapp-label {
+    display: inline;
+  }
+}
+
+/* Sağ alt: Yukarı çık */
+.landing-fab-back-to-top {
+  right: 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+}
+.landing-fab-back-to-top.landing-fab-visible {
+  opacity: 1;
+  visibility: visible;
+  animation: landing-fab-in 0.35s ease;
+}
+.landing-fab-back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+}
+@keyframes landing-fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

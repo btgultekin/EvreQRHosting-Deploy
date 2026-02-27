@@ -1,0 +1,438 @@
+/**
+ * ModernModal Styles
+ * Modern alert/confirm/prompt replacement
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODAL OVERLAY & CONTAINER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#mm-modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    pointer-events: none;
+}
+
+.mm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: auto;
+    z-index: 99999;
+}
+
+.mm-modal-overlay.mm-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODAL BOX
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mm-modal {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+    width: 100%;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.2s ease;
+    overflow: hidden;
+}
+
+.mm-modal-overlay.mm-show .mm-modal {
+    transform: scale(1) translateY(0);
+}
+
+.mm-modal-content {
+    padding: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODAL HEADER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mm-modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.mm-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.mm-icon {
+    width: 28px;
+    height: 28px;
+}
+
+/* Icon colors */
+.mm-icon-wrapper.mm-icon-info {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.mm-icon-wrapper.mm-icon-success {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.mm-icon-wrapper.mm-icon-warning {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.mm-icon-wrapper.mm-icon-error {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.mm-icon-wrapper.mm-icon-question {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+.mm-modal-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODAL BODY
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mm-modal-body {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.mm-modal-message {
+    font-size: 0.9375rem;
+    color: #4b5563;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.mm-modal-input {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.9375rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mm-modal-input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MODAL FOOTER & BUTTONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mm-modal-footer {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.mm-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    min-width: 90px;
+}
+
+.mm-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.mm-btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.mm-btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.mm-btn-secondary {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.mm-btn-secondary:hover {
+    background: #e5e7eb;
+}
+
+.mm-btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.mm-btn-danger:hover {
+    background: #b91c1c;
+}
+
+.mm-btn-success {
+    background: #16a34a;
+    color: white;
+}
+
+.mm-btn-success:hover {
+    background: #15803d;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOAST CONTAINER
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+#mm-toast-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 99998;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOAST
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.mm-toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    min-width: 280px;
+    max-width: 400px;
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+    border-left: 4px solid #2563eb;
+}
+
+.mm-toast.mm-toast-show {
+    transform: translateX(0);
+}
+
+.mm-toast.mm-toast-hide {
+    transform: translateX(120%);
+}
+
+/* Toast types */
+.mm-toast-info {
+    border-left-color: #2563eb;
+}
+
+.mm-toast-success {
+    border-left-color: #16a34a;
+}
+
+.mm-toast-warning {
+    border-left-color: #d97706;
+}
+
+.mm-toast-error {
+    border-left-color: #dc2626;
+}
+
+.mm-toast-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.mm-toast-icon .mm-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.mm-toast-info .mm-toast-icon {
+    color: #2563eb;
+}
+
+.mm-toast-success .mm-toast-icon {
+    color: #16a34a;
+}
+
+.mm-toast-warning .mm-toast-icon {
+    color: #d97706;
+}
+
+.mm-toast-error .mm-toast-icon {
+    color: #dc2626;
+}
+
+.mm-toast-message {
+    flex: 1;
+    font-size: 0.9375rem;
+    color: #374151;
+    line-height: 1.4;
+}
+
+.mm-toast-close {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: #9ca3af;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.mm-toast-close:hover {
+    color: #6b7280;
+    background: #f3f4f6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK THEME SUPPORT (for menu pages with dark themes)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.dark .mm-modal,
+[data-theme="dark"] .mm-modal {
+    background: #1f2937;
+}
+
+.dark .mm-modal-title,
+[data-theme="dark"] .mm-modal-title {
+    color: #f9fafb;
+}
+
+.dark .mm-modal-message,
+[data-theme="dark"] .mm-modal-message {
+    color: #d1d5db;
+}
+
+.dark .mm-modal-input,
+[data-theme="dark"] .mm-modal-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+}
+
+.dark .mm-modal-input:focus,
+[data-theme="dark"] .mm-modal-input:focus {
+    border-color: #3b82f6;
+}
+
+.dark .mm-btn-secondary,
+[data-theme="dark"] .mm-btn-secondary {
+    background: #374151;
+    color: #d1d5db;
+}
+
+.dark .mm-btn-secondary:hover,
+[data-theme="dark"] .mm-btn-secondary:hover {
+    background: #4b5563;
+}
+
+.dark .mm-toast,
+[data-theme="dark"] .mm-toast {
+    background: #1f2937;
+}
+
+.dark .mm-toast-message,
+[data-theme="dark"] .mm-toast-message {
+    color: #d1d5db;
+}
+
+.dark .mm-toast-close,
+[data-theme="dark"] .mm-toast-close {
+    color: #6b7280;
+}
+
+.dark .mm-toast-close:hover,
+[data-theme="dark"] .mm-toast-close:hover {
+    color: #9ca3af;
+    background: #374151;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 480px) {
+    .mm-modal {
+        max-width: calc(100% - 2rem);
+    }
+
+    .mm-modal-content {
+        padding: 1.25rem;
+    }
+
+    .mm-modal-footer {
+        flex-direction: column-reverse;
+    }
+
+    .mm-btn {
+        width: 100%;
+    }
+
+    #mm-toast-container {
+        top: auto;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+    }
+
+    .mm-toast {
+        min-width: auto;
+        max-width: 100%;
+        transform: translateY(120%);
+    }
+
+    .mm-toast.mm-toast-show {
+        transform: translateY(0);
+    }
+
+    .mm-toast.mm-toast-hide {
+        transform: translateY(120%);
+    }
+}
