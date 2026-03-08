@@ -1773,6 +1773,14 @@
   font-size: 0.875rem;
   color: #6b7280;
 }
+.cart-item-options {
+  margin: 0 0 0.25rem;
+}
+.cart-item-option-line {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.25;
+}
 .cart-item-total {
   margin-top: auto;
   font-size: 0.9375rem;
@@ -3202,6 +3210,14 @@
   color: #6b7280;
   margin-top: 0.125rem;
 }
+.order-item-options {
+  margin-top: 0.25rem;
+}
+.order-item-option {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.25;
+}
 .order-item-price {
   font-size: 0.875rem;
   font-weight: 600;
@@ -3824,6 +3840,14 @@
 .orderdetail-item-qty {
   font-size: 0.75rem;
   color: #6b7280;
+}
+.orderdetail-item-options {
+  margin-top: 0.25rem;
+}
+.orderdetail-item-option {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.25;
 }
 .orderdetail-item-price {
   font-size: 0.875rem;

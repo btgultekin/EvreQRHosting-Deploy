@@ -80,20 +80,65 @@ var CartService = (function() {
     /**
      * Sepet verisini public formata dönüştürür
      */
+    function normalizeSelectedOptions(selectedOptions) {
+        if (!Array.isArray(selectedOptions)) return [];
+        return selectedOptions
+            .filter(function(opt) {
+                return opt && opt.groupName && opt.itemName;
+            })
+            .map(function(opt) {
+                return {
+                    groupName: String(opt.groupName),
+                    itemName: String(opt.itemName),
+                    extraPrice: parseFloat(opt.extraPrice) || 0
+                };
+            });
+    }
+
+    function createOptionSignature(selectedOptions) {
+        var normalized = normalizeSelectedOptions(selectedOptions);
+        if (normalized.length === 0) return '';
+        return normalized
+            .slice()
+            .sort(function(a, b) {
+                var ag = a.groupName.localeCompare(b.groupName);
+                if (ag !== 0) return ag;
+                return a.itemName.localeCompare(b.itemName);
+            })
+            .map(function(opt) {
+                return opt.groupName + '|' + opt.itemName + '|' + opt.extraPrice.toFixed(2);
+            })
+            .join('||');
+    }
+
+    function calculateOptionExtraTotal(selectedOptions) {
+        var normalized = normalizeSelectedOptions(selectedOptions);
+        var total = 0;
+        normalized.forEach(function(opt) {
+            total += opt.extraPrice;
+        });
+        return total;
+    }
+
     function getPublicCart() {
         var totalQuantity = 0;
         var totalPrice = 0;
 
         var items = cart.map(function(item) {
-            var itemTotal = item.price * item.quantity;
+            var unitPrice = (parseFloat(item.basePrice) || 0) + calculateOptionExtraTotal(item.selectedOptions);
+            var itemTotal = unitPrice * item.quantity;
             totalQuantity += item.quantity;
             totalPrice += itemTotal;
             return {
+                itemKey: item.itemKey,
                 productId: item.productId,
                 name: item.name,
-                price: item.price,
+                price: unitPrice,
+                basePrice: parseFloat(item.basePrice) || 0,
                 quantity: item.quantity,
                 imageUrl: item.imageUrl || null,
+                selectedOptions: normalizeSelectedOptions(item.selectedOptions),
+                selectedOptionsJson: item.selectedOptionsJson || null,
                 total: itemTotal
             };
         });
@@ -110,9 +155,18 @@ var CartService = (function() {
     /**
      * Sepette ürün bulur
      */
-    function findItemIndex(productId) {
+    function findItemIndex(productId, optionSignature) {
         for (var i = 0; i < cart.length; i++) {
-            if (cart[i].productId === productId) {
+            if (cart[i].productId === productId && (cart[i].optionSignature || '') === (optionSignature || '')) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    function findItemIndexByKey(itemKey) {
+        for (var i = 0; i < cart.length; i++) {
+            if (cart[i].itemKey === itemKey) {
                 return i;
             }
         }
@@ -180,7 +234,10 @@ var CartService = (function() {
             if (quantity < 1) quantity = 1;
 
             var productId = parseInt(product.id);
-            var index = findItemIndex(productId);
+            var selectedOptions = normalizeSelectedOptions(product.selectedOptions);
+            var optionSignature = createOptionSignature(selectedOptions);
+            var itemKey = String(productId) + '::' + (optionSignature || 'default');
+            var index = findItemIndex(productId, optionSignature);
 
             if (index >= 0) {
                 // Mevcut ürün - miktarı artır
@@ -188,10 +245,14 @@ var CartService = (function() {
             } else {
                 // Yeni ürün ekle
                 cart.push({
+                    itemKey: itemKey,
                     productId: productId,
                     name: String(product.name || ''),
-                    price: parseFloat(product.price) || 0,
+                    basePrice: parseFloat(product.basePrice || product.price) || 0,
                     imageUrl: product.imageUrl || null,
+                    selectedOptions: selectedOptions,
+                    selectedOptionsJson: selectedOptions.length > 0 ? JSON.stringify(selectedOptions) : null,
+                    optionSignature: optionSignature,
                     quantity: quantity
                 });
             }
@@ -207,11 +268,16 @@ var CartService = (function() {
          * @param {number} productId
          * @returns {Object} Güncel sepet
          */
-        removeFromCart: function(productId) {
+        removeFromCart: function(productIdOrItemKey) {
             if (!companyId) return null;
 
-            productId = parseInt(productId);
-            var index = findItemIndex(productId);
+            var index = -1;
+            if (typeof productIdOrItemKey === 'string' && productIdOrItemKey.indexOf('::') > -1) {
+                index = findItemIndexByKey(productIdOrItemKey);
+            } else {
+                var productId = parseInt(productIdOrItemKey);
+                index = findItemIndex(productId, '');
+            }
 
             if (index >= 0) {
                 cart.splice(index, 1);
@@ -229,17 +295,21 @@ var CartService = (function() {
          * @param {number} quantity - Yeni miktar (0 ise ürün silinir)
          * @returns {Object} Güncel sepet
          */
-        updateQuantity: function(productId, quantity) {
+        updateQuantity: function(productIdOrItemKey, quantity) {
             if (!companyId) return null;
 
-            productId = parseInt(productId);
             quantity = parseInt(quantity) || 0;
 
             if (quantity <= 0) {
-                return this.removeFromCart(productId);
+                return this.removeFromCart(productIdOrItemKey);
             }
 
-            var index = findItemIndex(productId);
+            var index = -1;
+            if (typeof productIdOrItemKey === 'string' && productIdOrItemKey.indexOf('::') > -1) {
+                index = findItemIndexByKey(productIdOrItemKey);
+            } else {
+                index = findItemIndex(parseInt(productIdOrItemKey), '');
+            }
             if (index >= 0) {
                 cart[index].quantity = quantity;
                 saveToStorage();
@@ -255,11 +325,15 @@ var CartService = (function() {
          * @param {number} productId
          * @returns {Object} Güncel sepet
          */
-        incrementQuantity: function(productId) {
-            productId = parseInt(productId);
-            var index = findItemIndex(productId);
+        incrementQuantity: function(productIdOrItemKey) {
+            var index = -1;
+            if (typeof productIdOrItemKey === 'string' && productIdOrItemKey.indexOf('::') > -1) {
+                index = findItemIndexByKey(productIdOrItemKey);
+            } else {
+                index = findItemIndex(parseInt(productIdOrItemKey), '');
+            }
             if (index >= 0) {
-                return this.updateQuantity(productId, cart[index].quantity + 1);
+                return this.updateQuantity(cart[index].itemKey, cart[index].quantity + 1);
             }
             return getPublicCart();
         },
@@ -269,11 +343,15 @@ var CartService = (function() {
          * @param {number} productId
          * @returns {Object} Güncel sepet
          */
-        decrementQuantity: function(productId) {
-            productId = parseInt(productId);
-            var index = findItemIndex(productId);
+        decrementQuantity: function(productIdOrItemKey) {
+            var index = -1;
+            if (typeof productIdOrItemKey === 'string' && productIdOrItemKey.indexOf('::') > -1) {
+                index = findItemIndexByKey(productIdOrItemKey);
+            } else {
+                index = findItemIndex(parseInt(productIdOrItemKey), '');
+            }
             if (index >= 0) {
-                return this.updateQuantity(productId, cart[index].quantity - 1);
+                return this.updateQuantity(cart[index].itemKey, cart[index].quantity - 1);
             }
             return getPublicCart();
         },
