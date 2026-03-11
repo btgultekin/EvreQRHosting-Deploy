@@ -4640,8 +4640,8 @@
   padding-top: 0.15rem;
 }
 .menu-theme-6 .menu-back-nav {
-  position: sticky;
-  top: 56px;
+  position: static;
+  top: auto;
   z-index: 43;
   background: rgba(248, 250, 252, 0.82);
   backdrop-filter: blur(14px);
@@ -4824,7 +4824,7 @@
 .menu-theme-6 .menu-tab-nav,
 .menu-theme-6 #dineInBar,
 .menu-theme-6 .menu-back-nav { z-index: 40 !important; }
-.menu-theme-6 .product-modal-overlay,
+.menu-theme-6 .product-modal-overlay { z-index: 13050 !important; }
 .menu-theme-6 .cart-drawer,
 .menu-theme-6 .cart-drawer-backdrop,
 .menu-theme-6 .order-modal,
@@ -4932,6 +4932,8 @@
 }
 
 .menu-theme-7 .menu-tab-nav {
+  position: static !important;
+  top: auto !important;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.42rem;
@@ -5004,8 +5006,8 @@
 
 .menu-theme-7 .menu-filter-content { display: block; padding-top: 0.15rem; }
 .menu-theme-7 .menu-back-nav {
-  position: sticky;
-  top: 56px;
+  position: static;
+  top: auto;
   z-index: 43;
   background: rgba(15, 23, 42, 0.92);
   border: 1px solid rgba(71, 85, 105, 0.65);
@@ -5147,7 +5149,7 @@
 .menu-theme-7 .menu-tab-nav,
 .menu-theme-7 #dineInBar,
 .menu-theme-7 .menu-back-nav { z-index: 40 !important; }
-.menu-theme-7 .product-modal-overlay,
+.menu-theme-7 .product-modal-overlay { z-index: 13050 !important; }
 .menu-theme-7 .cart-drawer,
 .menu-theme-7 .cart-drawer-backdrop,
 .menu-theme-7 .order-modal,
