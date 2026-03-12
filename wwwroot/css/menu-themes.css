@@ -1601,7 +1601,7 @@
 .cart-drawer-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: 13020;
   background: rgba(0,0,0,0);
   backdrop-filter: blur(0);
   -webkit-backdrop-filter: blur(0);
@@ -1621,7 +1621,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 210;
+  z-index: 13030;
   width: 100%;
   max-width: 420px;
   display: flex;
@@ -4831,7 +4831,7 @@
 .menu-theme-6 .order-modal-backdrop,
 .menu-theme-6 #dineInCodeModal,
 .menu-theme-6 #dineInOffcanvas,
-.menu-theme-6 #dineInOverlay { z-index: 85 !important; }
+.menu-theme-6 #dineInOverlay { z-index: 13020 !important; }
 .menu-theme-6 .menu-lang-switcher { z-index: 92 !important; }
 .menu-theme-6 .ai-fab,
 .menu-theme-6 .ai-chat-overlay,
@@ -5156,7 +5156,7 @@
 .menu-theme-7 .order-modal-backdrop,
 .menu-theme-7 #dineInCodeModal,
 .menu-theme-7 #dineInOffcanvas,
-.menu-theme-7 #dineInOverlay { z-index: 85 !important; }
+.menu-theme-7 #dineInOverlay { z-index: 13020 !important; }
 .menu-theme-7 .menu-lang-switcher { z-index: 92 !important; }
 .menu-theme-7 .ai-fab,
 .menu-theme-7 .ai-chat-overlay,
