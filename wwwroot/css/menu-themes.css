@@ -5267,3 +5267,198 @@
   }
   .menu-theme-7 .menu-lang-switcher.open .menu-lang-flags { transform: translate(-50%, 0); }
 }
+
+/* ======================================================
+   GLOBAL THEME COLOR PALETTE (all basic + premium)
+   ====================================================== */
+.menu-page {
+  --menu-accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --menu-accent-solid: #ef4444;
+  --menu-accent-strong: #dc2626;
+  --menu-accent-shadow: 0 4px 14px rgba(239, 68, 68, 0.28);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(239, 68, 68, 0.38);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(239, 68, 68, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(239, 68, 68, 0.42);
+  --menu-accent-pulse: rgba(239, 68, 68, 0.45);
+  --menu-accent-border: rgba(248, 113, 113, 0.7);
+}
+
+.menu-page.menu-color-1 {
+  --menu-accent-gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  --menu-accent-solid: #2563eb;
+  --menu-accent-strong: #1d4ed8;
+  --menu-accent-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(37, 99, 235, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(37, 99, 235, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(37, 99, 235, 0.45);
+  --menu-accent-pulse: rgba(37, 99, 235, 0.45);
+  --menu-accent-border: rgba(96, 165, 250, 0.72);
+}
+
+.menu-page.menu-color-2 {
+  --menu-accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  --menu-accent-solid: #ef4444;
+  --menu-accent-strong: #dc2626;
+  --menu-accent-shadow: 0 4px 14px rgba(239, 68, 68, 0.28);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(239, 68, 68, 0.38);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(239, 68, 68, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(239, 68, 68, 0.42);
+  --menu-accent-pulse: rgba(239, 68, 68, 0.45);
+  --menu-accent-border: rgba(248, 113, 113, 0.7);
+}
+
+.menu-page.menu-color-3 {
+  --menu-accent-gradient: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  --menu-accent-solid: #7c3aed;
+  --menu-accent-strong: #6d28d9;
+  --menu-accent-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(124, 58, 237, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(124, 58, 237, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(124, 58, 237, 0.45);
+  --menu-accent-pulse: rgba(124, 58, 237, 0.45);
+  --menu-accent-border: rgba(167, 139, 250, 0.72);
+}
+
+.menu-page.menu-color-4 {
+  --menu-accent-gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  --menu-accent-solid: #059669;
+  --menu-accent-strong: #047857;
+  --menu-accent-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(5, 150, 105, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(5, 150, 105, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(5, 150, 105, 0.45);
+  --menu-accent-pulse: rgba(5, 150, 105, 0.45);
+  --menu-accent-border: rgba(52, 211, 153, 0.72);
+}
+
+.menu-page.menu-color-5 {
+  --menu-accent-gradient: linear-gradient(135deg, #db2777 0%, #f43f5e 100%);
+  --menu-accent-solid: #db2777;
+  --menu-accent-strong: #be185d;
+  --menu-accent-shadow: 0 4px 14px rgba(219, 39, 119, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(219, 39, 119, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(219, 39, 119, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(219, 39, 119, 0.45);
+  --menu-accent-pulse: rgba(219, 39, 119, 0.45);
+  --menu-accent-border: rgba(244, 114, 182, 0.72);
+}
+
+.menu-page.menu-color-6 {
+  --menu-accent-gradient: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);
+  --menu-accent-solid: #b91c1c;
+  --menu-accent-strong: #991b1b;
+  --menu-accent-shadow: 0 4px 14px rgba(185, 28, 28, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(185, 28, 28, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(185, 28, 28, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(185, 28, 28, 0.45);
+  --menu-accent-pulse: rgba(185, 28, 28, 0.45);
+  --menu-accent-border: rgba(239, 68, 68, 0.68);
+}
+
+.menu-page.menu-color-7 {
+  --menu-accent-gradient: linear-gradient(135deg, #111827 0%, #374151 100%);
+  --menu-accent-solid: #111827;
+  --menu-accent-strong: #030712;
+  --menu-accent-shadow: 0 4px 14px rgba(17, 24, 39, 0.35);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(17, 24, 39, 0.45);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(17, 24, 39, 0.4);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(17, 24, 39, 0.52);
+  --menu-accent-pulse: rgba(55, 65, 81, 0.5);
+  --menu-accent-border: rgba(107, 114, 128, 0.75);
+}
+
+.menu-tab-btn.active,
+.menu-tab-filter-btn.has-filter,
+.menu-add-to-cart-btn,
+.menu-cart-fab,
+.cart-checkout-btn,
+.product-modal-add-btn,
+.dine-in-add-btn {
+  background: var(--menu-accent-gradient) !important;
+}
+
+.menu-add-to-cart-btn,
+.menu-cart-fab,
+.cart-checkout-btn,
+.product-modal-add-btn,
+.dine-in-add-btn {
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-add-to-cart-btn:hover,
+.menu-cart-fab:hover,
+.cart-checkout-btn:hover,
+.product-modal-add-btn:hover,
+.dine-in-add-btn:hover {
+  box-shadow: var(--menu-accent-shadow-hover) !important;
+}
+
+.menu-page .menu-lang-toggle {
+  background: var(--menu-accent-gradient) !important;
+  border-color: var(--menu-accent-border) !important;
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-page .menu-lang-toggle svg {
+  color: #ffffff !important;
+}
+
+.menu-page .menu-lang-btn.active {
+  border-color: var(--menu-accent-solid) !important;
+  box-shadow: 0 0 0 3px var(--menu-accent-pulse) !important;
+}
+
+.menu-theme-6 .menu-tab-btn.active,
+.menu-theme-6 .menu-tab-filter-btn.has-filter,
+.menu-theme-7 .menu-tab-btn.active,
+.menu-theme-7 .menu-tab-filter-btn.has-filter {
+  border-color: var(--menu-accent-border) !important;
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-theme-6 .menu-category-card.is-active,
+.menu-theme-7 .menu-category-card.is-active {
+  border-color: var(--menu-accent-border) !important;
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-theme-6 .menu-add-to-cart-btn,
+.menu-theme-7 .menu-add-to-cart-btn,
+.menu-theme-6 .product-modal-add-btn,
+.menu-theme-7 .product-modal-add-btn {
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-theme-6 .menu-lang-toggle,
+.menu-theme-6 .ai-fab,
+.menu-theme-7 .menu-lang-toggle,
+.menu-theme-7 .ai-fab {
+  background: var(--menu-accent-gradient) !important;
+  border-color: var(--menu-accent-border) !important;
+  box-shadow: var(--menu-accent-shadow-lg) !important;
+}
+
+.menu-theme-6 .ai-fab-pulse,
+.menu-theme-7 .ai-fab-pulse {
+  border-color: var(--menu-accent-pulse) !important;
+}
+
+.menu-theme-6 .ai-chat-header,
+.menu-theme-7 .ai-chat-header {
+  background: var(--menu-accent-gradient) !important;
+}
+
+.menu-page #dineInBar {
+  background: var(--menu-accent-gradient) !important;
+  box-shadow: var(--menu-accent-shadow) !important;
+}
+
+.menu-page .premium-dinein-btn.premium-dinein-btn-cart {
+  color: var(--menu-accent-solid) !important;
+}
+
+.menu-theme-6 .cart-checkout-btn,
+.menu-theme-7 .cart-checkout-btn {
+  background: var(--menu-accent-gradient) !important;
+  box-shadow: var(--menu-accent-shadow) !important;
+}
