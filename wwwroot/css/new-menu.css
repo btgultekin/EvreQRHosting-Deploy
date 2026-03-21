@@ -1,0 +1,376 @@
+/* ═══════════════════════════════════════════════════════════════
+   NewMenu (nm-page) — yalnızca yerleşim: alt dock, modal, banner, FAB.
+   Tema 1–8 ve renk preset’i menu-themes.css üzerinden uygulanır.
+   ═══════════════════════════════════════════════════════════════ */
+
+.nm-page .menu-page-inner {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+
+/* Sol üst dil seçiciyi gizle — ayarlar modali kullanılır */
+.nm-page .menu-lang-switcher {
+    display: none !important;
+}
+
+/* AI FAB: dock’tan programatik tıklanır */
+.nm-page #ai-fab {
+    position: fixed;
+    left: -9999px;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.nm-root {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Opsiyonel banner (logo altı) */
+.nm-banner {
+    width: 100%;
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 12px 12px;
+}
+
+.nm-banner__img {
+    display: block;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.nm-menu-tab-home {
+    width: 100%;
+}
+
+/* Sepet FAB — alt dock’un üstünde */
+.nm-page .nm-menu-cart-fab.menu-cart-fab {
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+    right: 14px;
+    z-index: 8500;
+}
+
+/* Değerlendirme — sol kenara yapışık dikey sekme: içerik yatay (ikon+metin), tüm blok -90° döner */
+/* Inline overflow:hidden / height:22px üst elemanda kesmesin diye overflow: visible !important */
+.nm-page #feedback-trigger {
+    position: fixed !important;
+    left: 0 !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    z-index: 10080;
+    pointer-events: none;
+}
+
+.nm-page #feedback-trigger > div {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding-left: env(safe-area-inset-left, 0px);
+    pointer-events: auto;
+}
+
+.nm-page #feedback-open-btn {
+    border-radius: 9999px !important;
+    border: 1px solid var(--menu-accent-border, rgba(255, 255, 255, 0.22)) !important;
+    box-shadow: 2px 0 14px rgba(0, 0, 0, 0.12) !important;
+    padding: 9px 14px !important;
+    display: inline-flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    white-space: nowrap !important;
+    transform: rotate(-90deg) !important;
+    transform-origin: left center !important;
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
+}
+
+.nm-page #feedback-open-btn svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: #ffffff !important;
+    fill: currentColor !important;
+}
+
+.nm-page #feedback-open-btn span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+body.ai-chat-open #feedback-trigger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* AI: kapalıyken dock’un ALTINDA ve tıklanamaz — üstte kalıp ekranı kesmesin */
+.nm-page #ai-chat-overlay:not(.open) {
+    z-index: 1000 !important;
+    pointer-events: none !important;
+}
+
+.nm-page #ai-chat-overlay.open {
+    z-index: 10050 !important;
+    pointer-events: auto !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+.nm-page #ai-chat:not(.open) {
+    transform: translateY(100%) !important;
+    pointer-events: none !important;
+    z-index: 1010 !important;
+}
+
+.nm-page #ai-chat.open {
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+    z-index: 10100 !important;
+}
+
+/* Alt menü çubuğunun üzerine oturur (dock arkada, bulanık değil) */
+.nm-page #ai-chat {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    max-height: min(92vh, 100dvh) !important;
+    border-radius: 1.25rem 1.25rem 0 0 !important;
+}
+
+@media (min-width: 640px) {
+    .nm-page #ai-chat {
+        left: auto !important;
+        right: 12px !important;
+        bottom: 0 !important;
+        width: min(400px, calc(100vw - 24px)) !important;
+        max-height: min(640px, calc(100dvh - 16px)) !important;
+        border-radius: 1rem !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    }
+}
+
+/* Alerjen paneli: alt dock’un üstünde (tetikleyici dock’ta) */
+.nm-page .nm-allergen-panel {
+    position: fixed !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 8px) !important;
+    top: auto !important;
+    max-height: min(52vh, 420px) !important;
+    overflow-y: auto !important;
+    z-index: 9300 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.nm-page .nm-dock__btn--allergen {
+    position: relative;
+}
+
+.nm-page .nm-dock__btn--allergen .nm-dock__allergen-ico {
+    width: 20px;
+    height: 20px;
+}
+
+.nm-page .nm-dock__btn--allergen .nm-dock__allergen-badge {
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    font-size: 0.6rem;
+    line-height: 16px;
+}
+
+.nm-page .nm-dock__btn--allergen.has-filter {
+    color: var(--menu-accent-solid, #d97706);
+    background: rgba(245, 158, 11, 0.14);
+}
+
+/* Ayarlar modalı */
+.nm-modal[hidden] {
+    display: none !important;
+}
+
+.nm-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 12050;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+}
+
+.nm-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(6px);
+}
+
+.nm-modal__sheet {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: min(88vh, 720px);
+    overflow: auto;
+    border-radius: 22px 22px 0 0;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -12px 50px rgba(0, 0, 0, 0.18);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.nm-modal__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    background: inherit;
+    z-index: 2;
+}
+
+.nm-modal__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+.nm-modal__x {
+    border: none;
+    background: rgba(0, 0, 0, 0.06);
+    color: #374151;
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.nm-modal__body {
+    padding: 16px 18px 22px;
+}
+
+.nm-form-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin: 0 0 8px;
+}
+
+.nm-lang-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.nm-lang-row .menu-lang-btn {
+    width: 44px;
+    height: 44px;
+}
+
+/* Alt dock — tam genişlik, yapışık */
+.nm-dock {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: none;
+    z-index: 9000;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    gap: 0;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom, 0px));
+    border-radius: 0;
+    max-width: none;
+    background: rgba(255, 255, 255, 0.92);
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.menu-theme-7 .nm-dock,
+.menu-theme-7.nm-page .nm-dock {
+    background: rgba(15, 23, 42, 0.92);
+    border-top-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
+}
+
+.nm-dock__btn {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 6px 4px 4px;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+    color: #64748b;
+    font-size: 0.62rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.nm-dock__btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.nm-dock__btn.is-active {
+    color: var(--menu-accent-solid, #2563eb);
+    background: rgba(37, 99, 235, 0.08);
+}
+
+.menu-theme-7 .nm-dock__btn {
+    color: rgba(226, 232, 240, 0.85);
+}
+
+.menu-theme-7 .nm-dock__btn.is-active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Footer EvreQR — dock üstü boşluk (görünüm menu-themes.css .menu-footer ile) */
+.nm-page .menu-footer {
+    margin-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
