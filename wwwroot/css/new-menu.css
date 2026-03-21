@@ -57,6 +57,11 @@
     z-index: 8500;
 }
 
+/* Premium: tetikleyici yok (menu-themes ile birlikte; inline display’i de bastırır) */
+.premium-feedback-post-order.nm-page #feedback-trigger {
+    display: none !important;
+}
+
 /* Değerlendirme — sol kenara yapışık dikey sekme: içerik yatay (ikon+metin), tüm blok -90° döner */
 /* Inline overflow:hidden / height:22px üst elemanda kesmesin diye overflow: visible !important */
 .nm-page #feedback-trigger {

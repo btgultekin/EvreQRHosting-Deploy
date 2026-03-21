@@ -1310,6 +1310,11 @@
   text-decoration: underline;
 }
 
+/* Premium: değerlendirme şeridi/yüzen buton yok; ilk siparişten sonra panel JS ile açılır */
+.premium-feedback-post-order #feedback-trigger {
+  display: none !important;
+}
+
 /* ========== PRO UI ELEMENTS ========== */
 
 /* Header Actions (Login butonu) */
