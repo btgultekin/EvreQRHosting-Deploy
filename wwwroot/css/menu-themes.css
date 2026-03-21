@@ -5750,6 +5750,7 @@
   width: 100%;
   min-height: 84px;
   height: 84px;
+  aspect-ratio: auto;
   min-width: 0;
   max-width: none;
   display: flex;
@@ -5801,6 +5802,7 @@
   align-items: flex-start;
   padding: 0;
   width: 100%;
+  pointer-events: auto;
 }
 .menu-theme-8 .menu-category-card-title {
   color: #f8fdff;
