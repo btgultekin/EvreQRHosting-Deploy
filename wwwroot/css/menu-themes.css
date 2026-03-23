@@ -3972,7 +3972,7 @@
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%) translateY(100%);
-  z-index: 100000;
+  z-index: 2147483647;
   opacity: 0;
   transition: all 0.3s ease;
   max-width: calc(100vw - 2rem);
@@ -4429,7 +4429,24 @@
   border-bottom: 1px solid #fde68a;
   animation: allergenSlide 0.25s ease-out;
   position: relative;
-  z-index: 35;
+  z-index: 13060 !important;
+  pointer-events: auto;
+}
+.menu-allergen-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 13040;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.menu-allergen-backdrop.open {
+  opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 @keyframes allergenSlide {
@@ -4838,9 +4855,9 @@
 .menu-theme-6 #dineInOffcanvas,
 .menu-theme-6 #dineInOverlay { z-index: 13020 !important; }
 .menu-theme-6 .menu-lang-switcher { z-index: 92 !important; }
-.menu-theme-6 .ai-fab,
-.menu-theme-6 .ai-chat-overlay,
-.menu-theme-6 .ai-chat { z-index: 120 !important; }
+.menu-theme-6 .ai-fab { z-index: 13040 !important; }
+.menu-theme-6 .ai-chat-overlay { z-index: 13040 !important; }
+.menu-theme-6 .ai-chat { z-index: 13050 !important; }
 
 /* Modernized fixed controls */
 .menu-theme-6 #dineInBar {
@@ -5163,9 +5180,9 @@
 .menu-theme-7 #dineInOffcanvas,
 .menu-theme-7 #dineInOverlay { z-index: 13020 !important; }
 .menu-theme-7 .menu-lang-switcher { z-index: 92 !important; }
-.menu-theme-7 .ai-fab,
-.menu-theme-7 .ai-chat-overlay,
-.menu-theme-7 .ai-chat { z-index: 120 !important; }
+.menu-theme-7 .ai-fab { z-index: 13040 !important; }
+.menu-theme-7 .ai-chat-overlay { z-index: 13040 !important; }
+.menu-theme-7 .ai-chat { z-index: 13050 !important; }
 
 .menu-theme-7 #dineInBar {
   background: linear-gradient(135deg, rgba(30,41,59,0.92), rgba(15,23,42,0.92)) !important;
@@ -5614,9 +5631,9 @@
 .menu-theme-8 #dineInOffcanvas,
 .menu-theme-8 #dineInOverlay { z-index: 13020 !important; }
 .menu-theme-8 .menu-lang-switcher { z-index: 92 !important; }
-.menu-theme-8 .ai-fab,
-.menu-theme-8 .ai-chat-overlay,
-.menu-theme-8 .ai-chat { z-index: 120 !important; }
+.menu-theme-8 .ai-fab { z-index: 13040 !important; }
+.menu-theme-8 .ai-chat-overlay { z-index: 13040 !important; }
+.menu-theme-8 .ai-chat { z-index: 13050 !important; }
 
 .menu-theme-8 #dineInBar {
   background: linear-gradient(135deg, rgba(31,19,11,0.96), rgba(68,37,16,0.9)) !important;

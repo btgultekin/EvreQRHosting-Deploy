@@ -140,8 +140,8 @@ body.ai-chat-open #feedback-trigger {
 .nm-page #ai-chat-overlay.open {
     z-index: 10050 !important;
     pointer-events: auto !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
 }
 
 .nm-page #ai-chat:not(.open) {
@@ -190,6 +190,14 @@ body.ai-chat-open #feedback-trigger {
     z-index: 9300 !important;
     border-radius: 16px !important;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.nm-page .nm-allergen-backdrop {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 9200 !important;
 }
 
 .nm-page .nm-dock__btn--allergen {
