@@ -1038,12 +1038,12 @@
    Layout: Masonry benzeri grid, bold tipografi, renkli aksan
    ═══════════════════════════════════════════════════════════════════════════════ */
 .menu-theme-4.menu-page { 
-  background: linear-gradient(180deg, #fffaf3 0%, #fff4e6 100%);
+  background: linear-gradient(180deg, var(--menu-theme4-bg-start, #fffaf3) 0%, var(--menu-theme4-bg-end, #fff4e6) 100%);
   color: #2f2417;
 }
 .menu-theme-4 .menu-header { 
   background: #ffffff !important;
-  border-bottom: 2px solid #f0c27a;
+  border-bottom: 2px solid var(--menu-accent-border);
 }
 .menu-theme-4 .menu-header .menu-company-name { 
   color: #7a3b15;
@@ -1055,27 +1055,27 @@
 .menu-theme-4 .menu-header .menu-description { color: #a16207; font-weight: 500; }
 /* T4: Bento Navigation */
 .menu-theme-4 .menu-bento-nav { 
-  background: #fffdf9;
-  border-bottom: 1px solid #f3d9ad;
+  background: linear-gradient(180deg, var(--menu-theme4-bg-start, #fffdf9) 0%, var(--menu-theme4-bg-end, #fff2de) 100%);
+  border-bottom: 1px solid var(--menu-accent-border);
   box-shadow: 0 3px 10px rgba(122,59,21,0.08);
   top: var(--dinein-sticky-offset, 0px);
 }
 .menu-theme-4 .menu-bento-nav-item { 
   background: transparent;
-  color: #9a6b2f;
+  color: var(--menu-accent-solid);
   border-radius: 0.75rem;
 }
 .menu-theme-4 .menu-bento-nav-item:hover { 
-  background: #fff2de;
-  color: #7a3b15;
+  background: var(--menu-theme4-bg-end, #fff2de);
+  color: var(--menu-accent-solid);
 }
 .menu-theme-4 .menu-bento-nav-item.active { 
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  background: var(--menu-accent-gradient);
   color: #fff;
-  box-shadow: 0 6px 16px rgba(234,88,12,0.28);
+  box-shadow: var(--menu-accent-shadow);
 }
 .menu-theme-4 .menu-bento-nav-thumb {
-  border: 2px solid #f7c57f;
+  border: 2px solid var(--menu-accent-border);
   border-radius: 0.5rem;
 }
 .menu-theme-4 .menu-bento-nav-item.active .menu-bento-nav-thumb {
@@ -1108,7 +1108,7 @@
   content: '';
   width: 4px;
   height: 1.25rem;
-  background: linear-gradient(180deg, #f59e0b 0%, #ea580c 100%);
+  background: var(--menu-accent-gradient);
   border-radius: 2px;
 }
 /* T4: Ürün Kartları - Cesur, renkli */
@@ -1122,7 +1122,7 @@
 }
 .menu-theme-4 .menu-product-card { 
   background: #fff; 
-  border: 1px solid #f3d9ad;
+  border: 1px solid var(--menu-accent-border);
   color: #2f2417;
   border-radius: 1rem;
   overflow: hidden;
@@ -1130,8 +1130,8 @@
 }
 .menu-theme-4 .menu-product-card.bento-large { grid-column: span 2; }
 .menu-theme-4 .menu-product-card:hover { 
-  border-color: #f59e0b;
-  box-shadow: 0 12px 26px rgba(234,88,12,0.16);
+  border-color: var(--menu-accent-solid);
+  box-shadow: var(--menu-accent-shadow-lg);
   transform: translateY(-3px);
 }
 .menu-theme-4 .menu-product-card .menu-product-name { 
@@ -1146,14 +1146,14 @@
 .menu-theme-4 .menu-product-card .price { 
   color: #fff;
   font-weight: 800;
-  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  background: var(--menu-accent-gradient);
   padding: 0.375rem 0.875rem;
   border-radius: 9999px;
   display: inline-block;
   font-size: 0.9375rem;
 }
-.menu-theme-4 .menu-drawer { --menu-drawer-bg: #fff; color: #2f2417; border-left: 3px solid #f59e0b; }
-.menu-theme-4 .menu-footer { background: #fff; border-top: 2px solid #f3d9ad; }
+.menu-theme-4 .menu-drawer { --menu-drawer-bg: #fff; color: #2f2417; border-left: 3px solid var(--menu-accent-solid); }
+.menu-theme-4 .menu-footer { background: #fff; border-top: 2px solid var(--menu-accent-border); }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    TEMA 5: MINIMAL (Modern Minimalist) - GLASSMORPHISM
@@ -6039,6 +6039,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(239, 68, 68, 0.42);
   --menu-accent-pulse: rgba(239, 68, 68, 0.45);
   --menu-accent-border: rgba(248, 113, 113, 0.7);
+  --menu-theme4-bg-start: #fffaf3;
+  --menu-theme4-bg-end: #fff4e6;
 }
 
 .menu-page.menu-color-1 {
@@ -6051,6 +6053,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(37, 99, 235, 0.45);
   --menu-accent-pulse: rgba(37, 99, 235, 0.45);
   --menu-accent-border: rgba(96, 165, 250, 0.72);
+  --menu-theme4-bg-start: #f4f8ff;
+  --menu-theme4-bg-end: #e8f0ff;
 }
 
 .menu-page.menu-color-2 {
@@ -6063,6 +6067,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(239, 68, 68, 0.42);
   --menu-accent-pulse: rgba(239, 68, 68, 0.45);
   --menu-accent-border: rgba(248, 113, 113, 0.7);
+  --menu-theme4-bg-start: #fffaf3;
+  --menu-theme4-bg-end: #fff4e6;
 }
 
 .menu-page.menu-color-3 {
@@ -6075,6 +6081,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(124, 58, 237, 0.45);
   --menu-accent-pulse: rgba(124, 58, 237, 0.45);
   --menu-accent-border: rgba(167, 139, 250, 0.72);
+  --menu-theme4-bg-start: #faf5ff;
+  --menu-theme4-bg-end: #f3e8ff;
 }
 
 .menu-page.menu-color-4 {
@@ -6087,6 +6095,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(5, 150, 105, 0.45);
   --menu-accent-pulse: rgba(5, 150, 105, 0.45);
   --menu-accent-border: rgba(52, 211, 153, 0.72);
+  --menu-theme4-bg-start: #f0fdf9;
+  --menu-theme4-bg-end: #e2fcef;
 }
 
 .menu-page.menu-color-5 {
@@ -6099,6 +6109,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(219, 39, 119, 0.45);
   --menu-accent-pulse: rgba(219, 39, 119, 0.45);
   --menu-accent-border: rgba(244, 114, 182, 0.72);
+  --menu-theme4-bg-start: #fff5fa;
+  --menu-theme4-bg-end: #ffeaf3;
 }
 
 .menu-page.menu-color-6 {
@@ -6111,6 +6123,8 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(185, 28, 28, 0.45);
   --menu-accent-pulse: rgba(185, 28, 28, 0.45);
   --menu-accent-border: rgba(239, 68, 68, 0.68);
+  --menu-theme4-bg-start: #fff5f5;
+  --menu-theme4-bg-end: #ffe9e9;
 }
 
 .menu-page.menu-color-7 {
@@ -6123,6 +6137,22 @@
   --menu-accent-shadow-lg-hover: 0 14px 38px rgba(17, 24, 39, 0.52);
   --menu-accent-pulse: rgba(55, 65, 81, 0.5);
   --menu-accent-border: rgba(107, 114, 128, 0.75);
+  --menu-theme4-bg-start: #f8fafc;
+  --menu-theme4-bg-end: #eef2f6;
+}
+
+.menu-page.menu-color-8 {
+  --menu-accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  --menu-accent-solid: #ea580c;
+  --menu-accent-strong: #c2410c;
+  --menu-accent-shadow: 0 4px 14px rgba(234, 88, 12, 0.3);
+  --menu-accent-shadow-hover: 0 6px 20px rgba(234, 88, 12, 0.4);
+  --menu-accent-shadow-lg: 0 10px 30px rgba(234, 88, 12, 0.35);
+  --menu-accent-shadow-lg-hover: 0 14px 38px rgba(234, 88, 12, 0.45);
+  --menu-accent-pulse: rgba(234, 88, 12, 0.45);
+  --menu-accent-border: rgba(251, 146, 60, 0.72);
+  --menu-theme4-bg-start: #fff9ef;
+  --menu-theme4-bg-end: #fff1df;
 }
 
 .menu-tab-btn.active,

@@ -62,70 +62,14 @@
     display: none !important;
 }
 
-/* Değerlendirme — sol kenara yapışık dikey sekme: içerik yatay (ikon+metin), tüm blok -90° döner */
-/* Inline overflow:hidden / height:22px üst elemanda kesmesin diye overflow: visible !important */
-.nm-page #feedback-trigger {
-    position: fixed !important;
-    left: 0 !important;
-    top: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateY(-50%) !important;
-    width: auto !important;
-    max-width: none !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    z-index: 13080;
-    pointer-events: none;
+/* Yeni nesil: Basic’te değerlendirme alt dock’ta; yüzen #feedback-trigger kullanılmaz */
+body.nm-page:has(.nm-feedback-side-hidden) #feedback-trigger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
-.nm-page #feedback-trigger > div {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    padding-left: env(safe-area-inset-left, 0px);
-    pointer-events: auto;
-}
-
-.nm-page #feedback-open-btn {
-    border-radius: 9999px !important;
-    border: 1px solid var(--menu-accent-border, rgba(255, 255, 255, 0.22)) !important;
-    box-shadow: 2px 0 14px rgba(0, 0, 0, 0.12) !important;
-    padding: 9px 14px !important;
-    display: inline-flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    white-space: nowrap !important;
-    transform: rotate(-90deg) !important;
-    transform-origin: left center !important;
-    writing-mode: horizontal-tb !important;
-    text-orientation: mixed !important;
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff;
-}
-
-.nm-page #feedback-open-btn svg {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-    color: #ffffff !important;
-    fill: currentColor !important;
-}
-
-.nm-page #feedback-open-btn span {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-}
-
-body.ai-chat-open #feedback-trigger {
+body.ai-chat-open #nm-feedback-dock-btn {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;

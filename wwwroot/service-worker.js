@@ -87,6 +87,15 @@ self.addEventListener('fetch', event => {
         return;
     }
 
+    // Dine-in / QR doğrulama: asla önbellekten servis etme — eski Check JSON'u yeni QR sonrası
+    // "oturum doldu" ekranında takılı kalma hatasına yol açıyordu (cache-first GET).
+    if (url.pathname.startsWith('/DineIn/')) {
+        return;
+    }
+    if (url.pathname.toLowerCase() === '/qrverify') {
+        return;
+    }
+
     // Cache-first strategy for menu pages and assets
     event.respondWith(
         caches.match(event.request)
