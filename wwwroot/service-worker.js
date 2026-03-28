@@ -92,7 +92,8 @@ self.addEventListener('fetch', event => {
     if (url.pathname.startsWith('/DineIn/')) {
         return;
     }
-    if (url.pathname.toLowerCase() === '/qrverify') {
+    const p = url.pathname.toLowerCase();
+    if (p === '/qrverify' || p === '/v') {
         return;
     }
 
