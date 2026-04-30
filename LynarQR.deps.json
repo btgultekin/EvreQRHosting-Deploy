@@ -10,7 +10,7 @@
       "LynarQR/1.0.0": {
         "dependencies": {
           "ClosedXML": "0.104.2",
-          "MailKit": "4.15.0",
+          "MailKit": "4.16.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.2",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "9.0.2",
           "Microsoft.EntityFrameworkCore.Design": "9.0.2",
@@ -123,15 +123,15 @@
         }
       },
       "Humanizer.Core/2.14.1": {},
-      "MailKit/4.15.0": {
+      "MailKit/4.16.0": {
         "dependencies": {
-          "MimeKit": "4.15.0",
+          "MimeKit": "4.16.0",
           "System.Formats.Asn1": "9.0.2"
         },
         "runtime": {
           "lib/net8.0/MailKit.dll": {
-            "assemblyVersion": "4.15.0.0",
-            "fileVersion": "4.15.0.0"
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
           }
         }
       },
@@ -564,15 +564,15 @@
           }
         }
       },
-      "MimeKit/4.15.0": {
+      "MimeKit/4.16.0": {
         "dependencies": {
           "BouncyCastle.Cryptography": "2.6.2",
           "System.Security.Cryptography.Pkcs": "8.0.1"
         },
         "runtime": {
           "lib/net8.0/MimeKit.dll": {
-            "assemblyVersion": "4.15.0.0",
-            "fileVersion": "4.15.0.0"
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
           }
         }
       },
@@ -902,12 +902,12 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "MailKit/4.15.0": {
+    "MailKit/4.16.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-PM3bNDLwmK2hdiTx8xkTLRMRf9Y0VuirdyHWsrlSlz9hrME0lFkt/rF/9xlK/AtVML86BlS07pEPqo43Cmptbg==",
-      "path": "mailkit/4.15.0",
-      "hashPath": "mailkit.4.15.0.nupkg.sha512"
+      "sha512": "sha512-trJ82DOpAmo8i1jO1vNE+dGn4mPRyeYfy4swRcAGgMJhPoI1Kohf4OFJJf0+YIj4iUxgxPn8W+ht7e7KiYzSjg==",
+      "path": "mailkit/4.16.0",
+      "hashPath": "mailkit.4.16.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/9.0.2": {
       "type": "package",
@@ -1217,12 +1217,12 @@
       "path": "microsoft.win32.systemevents/6.0.0",
       "hashPath": "microsoft.win32.systemevents.6.0.0.nupkg.sha512"
     },
-    "MimeKit/4.15.0": {
+    "MimeKit/4.16.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+KVUJwHIp1aVPyVjcadAH1M9QkAwLflLujzySAS4N//AqSYjD+wMo2a3PkYu5XDibSuhlAg5sIh/DVNwVNGiVw==",
-      "path": "mimekit/4.15.0",
-      "hashPath": "mimekit.4.15.0.nupkg.sha512"
+      "sha512": "sha512-X0LFxeM4gPRIhODyY/HYS9b+zRZ7y//v59rFzgS6wLxcPuZThnMtNZHtrr0fjLyRRkg3gqJBtvW36XfUzZ7Djw==",
+      "path": "mimekit/4.16.0",
+      "hashPath": "mimekit.4.16.0.nupkg.sha512"
     },
     "Mono.TextTemplating/3.0.0": {
       "type": "package",
