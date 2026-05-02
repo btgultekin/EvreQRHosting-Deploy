@@ -18,6 +18,14 @@
 
         var home = document.getElementById('menuTabHome');
         var about = document.getElementById('menuTabAbout');
+        var hubToggle = document.getElementById('nmDockHubToggle');
+        var hubPopover = document.getElementById('nmDockHubPopover');
+        var hubPuan = document.getElementById('nmHubPuanBtn');
+        var hubAbout = document.getElementById('nmHubAboutBtn');
+        var hubAi = document.getElementById('nmHubAiBtn');
+        var nmRoot = document.querySelector('.nm-root');
+        var allergenEnabled = nmRoot && nmRoot.getAttribute('data-allergen-enabled') === 'true';
+        var allergenBtn = document.getElementById('allergenToggleBtn');
 
         function setDockActive(view) {
             qsa('.nm-dock [data-nm-view]').forEach(function (b) {
@@ -40,6 +48,32 @@
             window.scrollTo(0, 0);
         }
 
+        function closeHub() {
+            if (!hubToggle || !hubPopover) return;
+            hubToggle.setAttribute('aria-expanded', 'false');
+            hubPopover.hidden = true;
+            hubToggle.classList.remove('is-open');
+        }
+
+        function openHub() {
+            if (!hubToggle || !hubPopover) return;
+            hubToggle.setAttribute('aria-expanded', 'true');
+            hubPopover.hidden = false;
+            hubToggle.classList.add('is-open');
+        }
+
+        function toggleHub() {
+            if (!hubPopover || hubPopover.hidden) openHub();
+            else closeHub();
+        }
+
+        if (hubToggle && hubPopover) {
+            hubToggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleHub();
+            });
+        }
+
         function openSettings() {
             var modal = document.getElementById('nmSettingsModal');
             if (!modal) return;
@@ -56,13 +90,72 @@
             document.body.style.overflow = '';
         }
 
+        if (hubAbout) {
+            hubAbout.addEventListener('click', function () {
+                closeHub();
+                if (
+                    typeof window.EvreqrAboutStories !== 'undefined' &&
+                    window.EvreqrAboutStories.urls &&
+                    window.EvreqrAboutStories.urls.length > 0
+                ) {
+                    window.EvreqrAboutStories.open();
+                } else {
+                    goAbout();
+                }
+            });
+        }
+
+        if (hubAi) {
+            hubAi.addEventListener('click', function () {
+                closeHub();
+                var aiFab = document.getElementById('ai-fab');
+                if (aiFab) aiFab.click();
+                setDockActive('home');
+                if (home) home.style.display = '';
+                if (about) about.style.display = 'none';
+            });
+        }
+
+        if (hubPuan) {
+            hubPuan.addEventListener('click', function () {
+                closeHub();
+                if (typeof window.__evreqrTryOpenFeedbackFromHub === 'function') {
+                    window.__evreqrTryOpenFeedbackFromHub();
+                }
+            });
+        }
+
+        document.addEventListener('click', function (e) {
+            if (!hubToggle || !hubPopover || hubPopover.hidden) return;
+            var hubWrap = hubToggle.closest('.nm-dock__hub');
+            if (hubWrap && !hubWrap.contains(e.target)) closeHub();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeHub();
+        });
+
+        if (allergenBtn && !allergenEnabled) {
+            allergenBtn.addEventListener(
+                'click',
+                function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (typeof ModernModal !== 'undefined' && ModernModal.warning) {
+                        ModernModal.warning(
+                            'Alerjen filtresi bu işletme için henüz etkinleştirilmedi.',
+                            'Bilgi'
+                        );
+                    }
+                },
+                true
+            );
+        }
+
         qsa('.nm-dock [data-nm-view]').forEach(function (btn) {
             btn.addEventListener('click', function () {
+                closeHub();
                 var v = btn.getAttribute('data-nm-view');
-                if (v === 'settings') {
-                    openSettings();
-                    return;
-                }
                 if (v === 'ai') {
                     var aiFab = document.getElementById('ai-fab');
                     if (aiFab) aiFab.click();
@@ -77,7 +170,11 @@
         });
 
         var openSt = document.getElementById('nmOpenSettings');
-        if (openSt) openSt.addEventListener('click', openSettings);
+        if (openSt)
+            openSt.addEventListener('click', function () {
+                closeHub();
+                openSettings();
+            });
         var backdrop = document.getElementById('nmSettingsBackdrop');
         if (backdrop) backdrop.addEventListener('click', closeSettings);
         var closeBtn = document.getElementById('nmSettingsClose');

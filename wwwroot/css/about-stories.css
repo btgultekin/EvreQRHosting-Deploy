@@ -1,0 +1,136 @@
+/* Hakkımızda tam ekran slayt — menü temasıyla uyumlu */
+.nm-about-stories {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    background: #0a0a0a;
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nm-about-stories[hidden] {
+    display: none !important;
+}
+
+.nm-about-stories__progress {
+    display: flex;
+    gap: 4px;
+    padding: 10px 12px 6px;
+    flex-shrink: 0;
+}
+
+.nm-about-stories__progress-bar {
+    flex: 1;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    overflow: hidden;
+}
+
+.nm-about-stories__progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.95);
+    transform-origin: left center;
+    transition: width linear;
+}
+
+.nm-about-stories__progress-fill.is-done {
+    width: 100%;
+    transition: none;
+}
+
+.nm-about-stories__progress-fill.is-active {
+    will-change: width;
+}
+
+.nm-about-stories__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+}
+
+.nm-about-stories__close svg {
+    width: 22px;
+    height: 22px;
+}
+
+.nm-about-stories__viewport {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nm-about-stories__img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nm-about-stories.is-swipe-next .nm-about-stories__img {
+    opacity: 0.85;
+    transform: translateX(8px);
+}
+
+.nm-about-stories.is-swipe-prev .nm-about-stories__img {
+    opacity: 0.85;
+    transform: translateX(-8px);
+}
+
+.nm-about-stories.nm-about-stories--closing-down .nm-about-stories__viewport {
+    opacity: 0.92;
+    transform: translateY(18px);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nm-about-stories__touch-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.nm-about-stories__hint {
+    position: absolute;
+    bottom: env(safe-area-inset-bottom, 12px);
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 0 16px 10px;
+    pointer-events: none;
+    margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .nm-about-stories__img {
+        transition: none;
+    }
+    .nm-about-stories__progress-fill {
+        transition: none !important;
+    }
+}

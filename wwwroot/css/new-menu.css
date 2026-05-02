@@ -12,7 +12,7 @@
     display: none !important;
 }
 
-/* AI FAB: dock’tan programatik tıklanır */
+/* AI FAB: orta hub menüsünden tetiklenir; görünmez (programatik tıklama) */
 .nm-page #ai-fab {
     position: fixed;
     left: -9999px;
@@ -290,7 +290,9 @@ body.nm-page:has(.nm-feedback-side-hidden) #feedback-trigger {
     pointer-events: none !important;
 }
 
-body.ai-chat-open #nm-feedback-dock-btn {
+body.ai-chat-open #nm-feedback-dock-btn,
+body.ai-chat-open #nmHubPuanBtn,
+body.ai-chat-open #nmHubAiBtn {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -537,6 +539,144 @@ body.ai-chat-open #nm-feedback-dock-btn {
 .nm-dock__btn.is-active {
     color: var(--menu-accent-solid, #2563eb);
     background: rgba(37, 99, 235, 0.08);
+}
+
+/* Orta hub: daire içinde hamburger, etiket yok */
+.nm-dock__hub {
+    flex: 1 1 0;
+    min-width: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 2px;
+}
+
+.nm-dock__btn--hub {
+    flex: 0 0 auto;
+    min-height: 0;
+    padding: 2px 4px 4px;
+    gap: 0;
+    background: transparent !important;
+    color: #64748b;
+}
+
+.nm-dock__btn--hub.is-active {
+    color: #64748b;
+    background: transparent !important;
+}
+
+.nm-dock__hub-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 3px solid currentColor;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+}
+
+.nm-dock__hub-burger {
+    width: 22px;
+    height: 22px;
+}
+
+.nm-dock__btn--hub.is-open .nm-dock__hub-ring {
+    color: var(--menu-accent-solid, #2563eb);
+    border-color: var(--menu-accent-solid, #2563eb);
+}
+
+.nm-dock__hub--hint .nm-dock__hub-ring {
+    animation: nmHubHintPulse 2s ease-in-out infinite;
+}
+
+@keyframes nmHubHintPulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+    }
+}
+
+.nm-dock__hub-popover {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9105;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    min-width: 156px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 -10px 36px rgba(0, 0, 0, 0.14);
+}
+
+.nm-dock__hub-popover[hidden] {
+    display: none !important;
+}
+
+.nm-dock__hub-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s ease;
+}
+
+.nm-dock__hub-item:hover {
+    background: #e2e8f0;
+}
+
+.nm-dock__hub-item:first-child svg {
+    color: #eab308;
+}
+
+.nm-dock__hub-item--ai svg {
+    color: var(--menu-accent-solid, #6366f1);
+}
+
+.menu-theme-7 .nm-dock__btn--hub {
+    color: rgba(226, 232, 240, 0.88);
+}
+
+.menu-theme-7 .nm-dock__hub-popover {
+    background: rgba(15, 23, 42, 0.96);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.45);
+}
+
+.menu-theme-7 .nm-dock__hub-item {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f1f5f9;
+}
+
+.menu-theme-7 .nm-dock__hub-item:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.menu-theme-7 .nm-dock__hub-item--ai svg {
+    color: #a5b4fc;
+}
+
+.menu-theme-7 .nm-dock__btn--hub.is-open .nm-dock__hub-ring {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.92);
 }
 
 .menu-theme-7 .nm-dock__btn {
