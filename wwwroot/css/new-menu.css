@@ -53,6 +53,11 @@
     width: 100%;
 }
 
+/* Bilgi (Hakkında) ekranındayken kampanya story şeridi gösterilmez */
+.nm-root.nm-about-view .nm-campaign-stories {
+    display: none !important;
+}
+
 .nm-campaign-stories {
     width: 100%;
     max-width: 42rem;

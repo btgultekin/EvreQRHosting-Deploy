@@ -33,8 +33,13 @@
             });
         }
 
+        function setAboutShellVisible(isAbout) {
+            if (nmRoot) nmRoot.classList.toggle('nm-about-view', !!isAbout);
+        }
+
         function goHome() {
             setDockActive('home');
+            setAboutShellVisible(false);
             if (home) home.style.display = '';
             if (about) about.style.display = 'none';
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,6 +47,7 @@
 
         function goAbout() {
             setDockActive('about');
+            setAboutShellVisible(true);
             if (home) home.style.display = 'none';
             if (about) about.style.display = '';
             // scrollIntoView küçük kaydırmaya yol açıyor; bilgi görünümü üstten başlasın
@@ -111,6 +117,7 @@
                 var aiFab = document.getElementById('ai-fab');
                 if (aiFab) aiFab.click();
                 setDockActive('home');
+                setAboutShellVisible(false);
                 if (home) home.style.display = '';
                 if (about) about.style.display = 'none';
             });
@@ -160,6 +167,7 @@
                     var aiFab = document.getElementById('ai-fab');
                     if (aiFab) aiFab.click();
                     setDockActive('ai');
+                    setAboutShellVisible(false);
                     if (home) home.style.display = '';
                     if (about) about.style.display = 'none';
                     return;

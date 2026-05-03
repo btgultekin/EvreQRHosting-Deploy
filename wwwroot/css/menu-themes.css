@@ -4239,6 +4239,70 @@
 }
 .menu-about-card--link:hover .menu-about-card-arrow { transform: translateX(2px); color: #6b7280; }
 
+/* Çalışma saatleri — pastel badge / flex */
+.menu-about-card-icon--hours {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+.menu-about-card-body--hours .menu-about-card-label {
+  margin-bottom: 0.35rem;
+}
+.menu-about-hours {
+  margin-top: 0;
+}
+.menu-about-hours--uniform {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 0.65rem;
+}
+.menu-about-hours__everyday {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #64748b;
+}
+.menu-about-hours--split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  align-items: stretch;
+}
+.menu-about-hours__line {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+}
+.menu-about-hours__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #64748b;
+  flex-shrink: 0;
+}
+.menu-hours-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem 0.58rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #334155;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  white-space: nowrap;
+}
+.menu-hours-badge--range {
+  max-width: min(100%, 11rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* WiFi Şifre */
 .menu-about-wifi-pass {
   display: flex;
@@ -5325,6 +5389,17 @@
 }
 .menu-theme-7 .menu-about-card-label { color: #94a3b8; }
 .menu-theme-7 .menu-about-card-value { color: #e2e8f0; }
+.menu-theme-7 .menu-about-hours__everyday,
+.menu-theme-7 .menu-about-hours__label { color: #94a3b8; }
+.menu-theme-7 .menu-hours-badge {
+  background: rgba(148, 163, 184, 0.14);
+  color: #f1f5f9;
+  border-color: rgba(148, 163, 184, 0.32);
+}
+.menu-theme-7 .menu-about-card-icon--hours {
+  background: rgba(99, 102, 241, 0.22);
+  color: #a5b4fc;
+}
 .menu-theme-7 .menu-about-wifi-pass-code {
   background: #0f172a;
   color: #e2e8f0;
@@ -5772,6 +5847,17 @@
 }
 .menu-theme-8 .menu-about-card-label { color: #fdba74; }
 .menu-theme-8 .menu-about-card-value { color: #fff7ed; }
+.menu-theme-8 .menu-about-hours__everyday,
+.menu-theme-8 .menu-about-hours__label { color: #fdba74; }
+.menu-theme-8 .menu-hours-badge {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fffbeb;
+  border-color: rgba(251, 191, 36, 0.28);
+}
+.menu-theme-8 .menu-about-card-icon--hours {
+  background: rgba(251, 191, 36, 0.16);
+  color: #fbbf24;
+}
 .menu-theme-8 .menu-about-wifi-pass-code {
   background: #1a110b;
   color: #fff7ed;
@@ -6057,6 +6143,17 @@
 }
 .menu-theme-8 .menu-about-card-label { color: #475569; }
 .menu-theme-8 .menu-about-card-value { color: #0f172a; }
+.menu-theme-8 .menu-about-hours__everyday,
+.menu-theme-8 .menu-about-hours__label { color: #64748b; }
+.menu-theme-8 .menu-hours-badge {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #334155;
+  border-color: rgba(148, 163, 184, 0.28);
+}
+.menu-theme-8 .menu-about-card-icon--hours {
+  background: #eef2ff;
+  color: #4f46e5;
+}
 .menu-theme-8 .menu-about-wifi-pass-code {
   background: #f8fafc;
   color: #0f172a;
