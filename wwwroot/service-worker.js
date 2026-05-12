@@ -1,9 +1,15 @@
 /**
  * EvreQR Offline Menu Service Worker
- * Cache-first strategy for menu pages
+ * — Statik varlıklar: cache-first
+ * — Firma menü HTML’i (/{slug} tek segment): network-first, offline’da cache / offline.html
  */
 
 const CACHE_NAME = 'evreqr-menu-v1';
+
+/** MenuController {slug} rotasıyla çakışmayan tek segmentli yollar (ReservedSlugConstraint ile uyumlu). */
+const RESERVED_MENU_SLUG = new Set([
+    'admin', 'superadmin', 'main', 'home', 'menu', 'account', 'api', 'identity'
+]);
 const CACHE_URLS = [
     // CSS
     '/css/site.css',
@@ -97,6 +103,12 @@ self.addEventListener('fetch', event => {
         return;
     }
 
+    // Firma QR menü dokümanı: önce ağ (güncel HTML), yoksa önbellek — uzun süre açık sekme/SW ile eski kampanya sorununu azaltır
+    if (isLikelyCompanyMenuNavigationRequest(event.request, url)) {
+        event.respondWith(networkFirstHtmlThenCache(event.request));
+        return;
+    }
+
     // Cache-first strategy for menu pages and assets
     event.respondWith(
         caches.match(event.request)
@@ -118,6 +130,37 @@ self.addEventListener('fetch', event => {
             })
     );
 });
+
+function isLikelyCompanyMenuNavigationRequest(request, url) {
+    if (request.method !== 'GET' || request.mode !== 'navigate') return false;
+    const accept = request.headers.get('Accept');
+    if (!accept || accept.indexOf('text/html') === -1) return false;
+    const segments = url.pathname.split('/').filter(Boolean);
+    if (segments.length !== 1) return false;
+    const seg = segments[0].toLowerCase();
+    if (RESERVED_MENU_SLUG.has(seg)) return false;
+    if (seg.indexOf('.') !== -1) return false;
+    return true;
+}
+
+async function networkFirstHtmlThenCache(request) {
+    try {
+        const response = await fetch(request);
+        if (response.ok) {
+            const cache = await caches.open(DYNAMIC_CACHE);
+            cache.put(request, response.clone());
+        }
+        return response;
+    } catch (error) {
+        const cached = await caches.match(request);
+        if (cached) return cached;
+        if (request.headers.get('Accept')?.includes('text/html')) {
+            const offline = await caches.match('/offline.html');
+            if (offline) return offline;
+        }
+        throw error;
+    }
+}
 
 // Fetch from network and cache the response
 async function fetchAndCache(request) {
