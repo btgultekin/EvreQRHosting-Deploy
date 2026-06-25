@@ -14,17 +14,25 @@ const CACHE_URLS = [
     // CSS
     '/css/site.css',
     '/css/menu-themes.css',
+    '/css/menu-tailwind.css',
+    '/css/new-menu.css',
     '/css/modern-modal.css',
     // JS
     '/js/modern-modal.js',
+    '/js/new-menu.js',
     '/js/cart-service.js',
     '/js/auth-service.js',
     '/js/address-service.js',
     '/js/order-service.js',
+    '/lib/flowbite/dist/flowbite.min.css',
+    '/lib/flowbite/dist/flowbite.min.js',
+    '/lib/signalr/signalr.min.js',
     // Images
     '/images/favicon.png',
-    // External CDN (will be cached on first load)
-    'https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css'
+    '/images/flags/tr.png',
+    '/images/flags/gb.png',
+    '/images/flags/de.png',
+    '/images/flags/ru.png'
 ];
 
 // Dynamic cache for menu pages and images

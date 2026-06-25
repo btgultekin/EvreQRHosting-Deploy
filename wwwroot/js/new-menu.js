@@ -13,6 +13,13 @@
         return Array.prototype.slice.call((root || document).querySelectorAll(sel));
     }
 
+    function decodeImageAsync(img) {
+        if (!img || !img.decode) return;
+        img.decode().catch(function () {
+            // Decode ipucu desteklenmeyen/iptal edilen durumlarda normal yükleme devam eder.
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
         if (!document.body.classList.contains('nm-page')) return;
 
@@ -263,8 +270,10 @@
                 };
 
                 if (campaignImage) {
+                    campaignImage.decoding = 'async';
                     campaignImage.src = image;
                     campaignImage.alt = title;
+                    decodeImageAsync(campaignImage);
                 }
                 if (campaignTitle) campaignTitle.textContent = title;
                 if (campaignDesc) {

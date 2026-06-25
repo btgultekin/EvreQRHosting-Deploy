@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build:menu-tailwind": "tailwindcss -i ./wwwroot/css/menu-tailwind.input.css -o ./wwwroot/css/menu-tailwind.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

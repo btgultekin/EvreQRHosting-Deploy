@@ -6436,3 +6436,70 @@
   background: var(--menu-accent-gradient) !important;
   box-shadow: var(--menu-accent-shadow) !important;
 }
+
+/* Scroll performance: offscreen ürün kartlarını izole et, görünümü değiştirmez. */
+@supports (content-visibility: auto) {
+  .menu-product-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 180px 260px;
+  }
+}
+
+.menu-product-card,
+.menu-category-card,
+.menu-accordion-item,
+.menu-bento-nav-item {
+  contain: layout paint style;
+}
+
+.menu-products-grid,
+.menu-products-grid-sm,
+.menu-bento-grid,
+.menu-category-grid-inner {
+  contain: layout style;
+}
+
+.menu-category-card,
+.menu-accordion-trigger,
+.menu-bento-nav-item,
+.menu-add-to-cart-btn,
+.dine-in-add-btn,
+.product-like-btn {
+  touch-action: manipulation;
+}
+
+.menu-category-card-img,
+.menu-accordion-trigger-img,
+.menu-product-card img {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.menu-bento-nav-inner,
+.menu-cat-nav,
+.menu-category-grid {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .menu-product-card,
+  .menu-category-card,
+  .menu-cat-btn,
+  .menu-bento-nav-item {
+    transition-property: transform, box-shadow, background, border-color, color;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-filter-section,
+  .menu-product-card,
+  .menu-category-card,
+  .menu-accordion-content,
+  .menu-accordion-arrow,
+  .menu-add-to-cart-btn,
+  .dine-in-add-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}
